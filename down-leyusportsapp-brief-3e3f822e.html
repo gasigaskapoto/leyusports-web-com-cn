@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼体育下载 – 快速识别网站用途</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f2f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1.5rem 3rem;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e6eaef;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            transition: box-shadow 0.2s;
+        }
+        .hero-card:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+        }
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #0a1a2b;
+            margin-bottom: 0.75rem;
+        }
+        .hero-card .tagline {
+            font-size: 1.1rem;
+            color: #4a5b6e;
+            max-width: 580px;
+            margin: 0 auto 1.8rem;
+        }
+        .hero-card .badge {
+            display: inline-block;
+            background: #eef2f7;
+            border-radius: 40px;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2c3e50;
+            border: 1px solid #dce2ea;
+        }
+
+        /* 通用卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6eaef;
+            padding: 1.6rem 1.8rem;
+            transition: border-color 0.15s, box-shadow 0.2s;
+        }
+        .card:hover {
+            border-color: #ccd4de;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f2238;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3d4f63;
+            margin-bottom: 0.5rem;
+        }
+        .card .meta {
+            font-size: 0.85rem;
+            color: #6e8399;
+            border-top: 1px solid #edf1f6;
+            padding-top: 0.7rem;
+            margin-top: 0.7rem;
+        }
+
+        /* 场景卡片 - 三列 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .scene-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e6eaef;
+            padding: 1.5rem 1.6rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .scene-card .emoji {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .scene-card h4 {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0.2rem 0 0.4rem;
+            color: #0f1e2f;
+        }
+        .scene-card p {
+            font-size: 0.9rem;
+            color: #425569;
+        }
+
+        /* 链接段落卡片 */
+        .link-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e6eaef;
+            padding: 1.8rem 2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        }
+        .link-card p {
+            font-size: 1rem;
+            color: #1f3248;
+            max-width: 800px;
+        }
+        .link-card a {
+            color: #1a5c9c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b6cdde;
+            padding-bottom: 1px;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .link-card a:hover {
+            color: #0a3b6b;
+            border-bottom-color: #0a3b6b;
+        }
+
+        /* FAQ 摘要卡片 */
+        .faq-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e6eaef;
+            padding: 1.8rem 2rem 1.6rem;
+            margin-bottom: 2rem;
+        }
+        .faq-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0f1e2f;
+        }
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+        .faq-item strong {
+            display: inline-block;
+            font-weight: 600;
+            color: #0f2a41;
+            font-size: 0.95rem;
+            margin-bottom: 0.1rem;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #3b4f66;
+            margin: 0;
+        }
+
+        /* 提示条 */
+        .tip {
+            background: #e9edf3;
+            border-radius: 40px;
+            padding: 0.6rem 1.4rem;
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #1f3a57;
+            border: 1px solid #d3dce7;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero-card { padding: 2rem 1.2rem; }
+            .hero-card h1 { font-size: 1.7rem; }
+            .card-grid { gap: 1rem; }
+            .scene-grid { gap: 1rem; }
+            .link-card { padding: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>乐鱼体育下载 · 直接了解用途</h1>
+        <div class="tagline">面向体育爱好者与内容浏览者，提供清晰、可直达的信息入口，省去反复查找的步骤。</div>
+        <div class="badge">⚡ 专注体育内容导航</div>
+    </div>
+
+    <!-- 用途卡片（信息卡片式） -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 快速定位</h3>
+            <p>通过单一页面汇聚体育相关资源索引，用户无需在多个页面之间跳转，即可了解站点覆盖的核心内容方向。</p>
+            <div class="meta">适用于首次访问者</div>
+        </div>
+        <div class="card">
+            <h3>📌 分类浏览</h3>
+            <p>将体育资讯、赛事动态、平台信息按照常见需求分组展示，减少信息噪音，提升浏览效率。</p>
+            <div class="meta">信息结构简洁</div>
+        </div>
+        <div class="card">
+            <h3>🔗 直达链接</h3>
+            <p>页面内嵌入经过核验的跳转入口，用户可一键前往相关资源，避免记忆复杂地址或重复搜索。</p>
+            <div class="meta">降低操作成本</div>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 场景卡片 -->
+    <div class="scene-grid">
+        <div class="scene-card">
+            <div class="emoji">🏃</div>
+            <h4>运动爱好者</h4>
+            <p>日常关注体育赛事、球队动态或健身内容，希望快速找到高质量信息来源。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji">🧭</div>
+            <h4>信息搜集者</h4>
+            <p>需要汇总体育相关链接，做初步对比或内容筛选，节省逐个网站尝试的时间。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji">📱</div>
+            <h4>移动端用户</h4>
+            <p>偏好通过手机或平板直接访问页面，期望响应式布局与清晰的触控操作区域。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-card">
+        <p>
+            如果您正在寻找一个可以集中浏览体育相关内容的起始页面，可以直接访问
+            <a href="https://down-leyusportsapp.com">乐鱼体育下载</a>。
+            该页面集中呈现了体育资讯、平台索引以及常见问题摘要，适合初次接触体育类资源的用户快速建立认知。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 + 提示 -->
+    <div class="faq-card">
+        <h3>📖 FAQ 摘要</h3>
+        <div class="faq-item">
+            <strong>这个页面提供什么？</strong>
+            <p>是一个信息总览与导航页面，围绕体育相关内容进行聚合，帮助用户理解网站定位并找到需要的入口。</p>
+        </div>
+        <div class="faq-item">
+            <strong>链接安全吗？</strong>
+            <p>页面内所有超链均指向经过确认的资源地址，不包含第三方未知跳转或恶意重定向。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要注册？</strong>
+            <p>本页面仅作信息展示与导航，不要求用户注册或提供任何个人信息。</p>
+        </div>
+        <div class="tip" style="margin-top:0.8rem;">
+            💡 如果对某个板块有更深的兴趣，建议使用浏览器的“在新标签页打开”功能，不影响当前浏览。
+        </div>
+    </div>
+
+    <!-- 额外说明卡片（体现细致） -->
+    <div class="card" style="margin-bottom: 1.2rem;">
+        <p style="font-size: 0.9rem; color: #526477;">
+            <span style="font-weight: 500;">页面说明：</span> 本介绍页仅用于展示网站用途与内容结构，所有信息仅供参考。实际资源以
+            <a href="https://down-leyusportsapp.com" style="color: #1a5c9c; text-decoration: underline;">乐鱼体育下载</a>
+            页面为准，建议根据自身需求浏览对应板块。
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
