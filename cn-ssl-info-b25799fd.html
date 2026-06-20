@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · B体育 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f6fa;
+            color: #1e2638;
+            line-height: 1.7;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b121e 0%, #1a2638 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: #e8edf5;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #aab8d0;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+        .summary-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid #1d6bff;
+        }
+        .summary-card p {
+            font-size: 1.05rem;
+            color: #2b364e;
+        }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+        .highlight-item {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .highlight-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .highlight-item h3 span {
+            background: #1d6bff;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+        .highlight-item p {
+            font-size: 0.95rem;
+            color: #3f4a62;
+        }
+        .usage-note {
+            background: #eef2f9;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            border: 1px solid #d8e0ed;
+        }
+        .usage-note h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #0b1a33;
+        }
+        .usage-note ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+        }
+        .usage-note li {
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.98rem;
+            color: #1f2b42;
+        }
+        .usage-note li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #1d6bff;
+            font-weight: bold;
+        }
+        .access-tip {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f4;
+        }
+        .access-tip h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        .access-tip p {
+            margin-bottom: 0.8rem;
+            color: #2f3b54;
+        }
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2rem;
+            margin: 2.5rem 0 2rem;
+        }
+        .faq-mini details {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e8edf6;
+        }
+        .faq-mini summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f1d36;
+            padding: 0.3rem 0;
+        }
+        .faq-mini details p {
+            margin-top: 0.7rem;
+            font-size: 0.92rem;
+            color: #36435f;
+            padding-right: 0.5rem;
+        }
+        .inline-link {
+            color: #1d6bff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        .inline-link:hover {
+            border-bottom-color: #1d6bff;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6a7b99;
+            border-top: 1px solid #dce3ef;
+            padding-top: 1.8rem;
+            margin-top: 3rem;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .sub { font-size: 1rem; }
+            .summary-card { padding: 1.5rem; }
+            .usage-note, .access-tip { padding: 1.5rem; }
+            .faq-mini { grid-template-columns: 1fr; }
+            .highlights-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>B体育 · 产品说明</h1>
+        <div class="sub">从体验架构到访问要点，一份简明指南</div>
+    </section>
+
+    <div class="container">
+        <!-- 摘要卡片 -->
+        <div class="summary-card">
+            <p><strong>B体育</strong> 定位为多元运动信息与互动平台，围绕赛事数据、社区动态及轻量工具模块展开。平台以模块化设计降低使用门槛，同时保持信息密度——适合从快速浏览到深度查阅的不同场景。下文从功能亮点、使用建议与访问说明三个维度提供参考。</p>
+        </div>
+
+        <!-- 亮点网格 -->
+        <div class="highlights-grid">
+            <div class="highlight-item">
+                <h3>数据看板 <span>核心</span></h3>
+                <p>实时比分、统计图表与历史记录聚合展示，支持自定义关注项。信息层级经过梳理，重点数据前置，辅助快速判断。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>社区动态流</h3>
+                <p>用户可发布短评、讨论战术或分享观点。内容经基础审核与分类标签，提升信息筛选效率，减少无效干扰。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>轻量工具集</h3>
+                <p>包含赛程提醒、队伍对比、简易预测模拟等功能。工具不依赖复杂配置，打开即用，降低操作成本。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>响应式界面</h3>
+                <p>从移动端到桌面均保持统一布局逻辑，关键操作区域适配触控与鼠标交互，浏览体验连贯。</p>
+            </div>
+        </div>
+
+        <!-- 使用建议 -->
+        <div class="usage-note">
+            <h2>使用建议</h2>
+            <ul>
+                <li>首次使用可先浏览默认数据看板，熟悉信息分区与筛选逻辑</li>
+                <li>社区动态按「最新」「热门」「关注」分类切换，根据阅读目的选择入口</li>
+                <li>工具模块中「赛程提醒」支持订阅特定联赛或队伍，通知频率可调节</li>
+                <li>如遇到界面显示异常，尝试刷新或清除浏览器缓存，多数问题可自行恢复</li>
+                <li>账户相关设置（通知、隐私、偏好）集中在个人面板，修改后即时生效</li>
+            </ul>
+        </div>
+
+        <!-- 访问说明（可信克制） -->
+        <div class="access-tip">
+            <h2>访问说明</h2>
+            <p>平台通过标准 HTTPS 协议提供服务，数据传输经加密处理。日常访问时，建议保持浏览器及系统为较新版本，以获得更好的兼容性。如所在网络环境存在访问限制，可尝试更换网络或使用常规工具调整连接方式，平台本身未对地域做出主动限制。</p>
+            <p>关于服务稳定性：<a href="https://cn-ssl-bsports.com" class="inline-link">B体育</a> 采用多层冗余架构，核心数据定时备份。若遇短期维护或流量高峰，页面会显示相应提示，通常会在短时间内恢复。用户反馈渠道位于页面底部，建议优先查阅常见问题索引。</p>
+            <p>对隐私与数据收集有疑问的用户，可查阅平台公布的隐私摘要（位于帮助中心）。平台不收集非必要的个人敏感信息，第三方嵌入服务均经过筛选。</p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <details>
+                <summary>是否需要注册才能浏览主要页面？</summary>
+                <p>大部分内容（数据看板、社区公开帖、工具预览）无需注册即可查看。部分个性化功能（如关注、提醒、发布）需要创建账户，注册流程仅需邮箱与昵称。</p>
+            </details>
+            <details>
+                <summary>平台是否提供移动端应用？</summary>
+                <p>目前优先通过移动端网页适配。部分用户选择将页面添加至主屏幕（PWA 模式），获得接近原生应用的体验。独立应用正在规划中。</p>
+            </details>
+            <details>
+                <summary>如何报告页面错误或提出功能建议？</summary>
+                <p>页面底部设有「反馈」入口，提交后通常会在 2 个工作日内收到回复。重大紧急问题可通过帮助中心的邮件通道联系。</p>
+            </details>
+            <details>
+                <summary>数据更新频率如何？</summary>
+                <p>赛事核心数据（比分、统计）为实时推送，延迟通常在几秒内。社区动态与工具结果基于事件驱动更新，无固定轮询间隔。</p>
+            </details>
+        </div>
+
+        <div class="footer-note">
+            <span>本页仅为产品说明参考，具体功能以实际页面为准。</span>
+        </div>
+    </div>
+</body>
+</html>
